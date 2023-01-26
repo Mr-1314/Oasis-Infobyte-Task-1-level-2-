@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>calculator</title>
+	<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css"
+  rel="stylesheet"
+/>
+</head>
+<body class="text-center">
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <i class="fas fa-calculator" style="margin-right: 3px;"></i>
+            <small> Calculator</small>
+    </a>
+  </div>
+</nav>
+
+
+<div class="input-group" style="width:340px;margin-left:230px;">
+  <input
+    type="text"
+    class="form-control"
+    id="input-cal"
+    aria-label="Recipient's username"
+    aria-describedby="button-addon2"
+  />
+</div>
+
+
+<div class="btn-group shadow-0" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px"  value="(" data-mdb-color="dark">(</button>
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px"  value=")" data-mdb-color="dark">)</button>
+  <button type="button" class="btn btn-outline-secondary" style="width:70px" id="EnterBtn" data-mdb-color="dark">ans</button>
+  <button type="button" class="btn btn-danger"   id="delbtn"  style="width:70px" data-mdb-color="dark">del</button>
+  <button type="button" class="btn btn-outline-secondary" id="clearbtn" style="width:70px" data-mdb-color="dark"><i class="fas fa-backspace"></i></button>
+</div>
+<br>
+<div class="btn-group shadow-0" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px" value="7" data-mdb-color="dark">7</button>
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px" value="8" data-mdb-color="dark">8</button>
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px" value="9" data-mdb-color="dark">9</button>
+  <button type="button" class="btn btn-outline-secondary" style="width:70px" data-mdb-color="dark">%</button>
+  <button type="button" class="btn btn-outline-secondary" style="width:70px;background-color: #14a44d69;"  id="sqrtBtn"   data-mdb-color="dark">sqrt</button>
+</div>
+<br>
+<div class="btn-group shadow-0" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px" value="4" data-mdb-color="dark">4</button>
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px" value="5" data-mdb-color="dark">5</button>
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px" value="6" data-mdb-color="dark">6</button>
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px" value="*"  data-mdb-color="dark">x</button>
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px"  value="/" data-mdb-color="dark">/</button>
+</div>
+<br>
+<div class="btn-group shadow-0" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px" value="1" data-mdb-color="dark">1</button>
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px" value="2" data-mdb-color="dark">2</button>
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px" value="3" data-mdb-color="dark">3</button>
+  <button type="button" class="btn btn-outline-secondary number-btn"  value="+"  style="width:70px" data-mdb-color="dark">+</button>
+  <button type="button" class="btn btn-outline-secondary number-btn"   value="-"  style="width:70px" data-mdb-color="dark">-</button>
+</div>
+<br>
+<div class="btn-group shadow-0" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px" data-mdb-color="dark"  value=".">.</button>
+  <button type="button" class="btn btn-outline-secondary number-btn" style="width:70px"  value="0" data-mdb-color="dark">0</button>
+  <button type="button" class="btn btn-outline-secondary number-btn" id="clearplusmimisbtn" style="width:70px" data-mdb-color="dark">+/-</button>
+  <button type="button" class="btn btn-primary" style="width:140px" id="EnterBtn1"  data-mdb-color="dark">Enter</button>
+</div>
+</body>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
+></script>
+<script>
+  var numberBtn= document.getElementsByClassName("number-btn");
+  var inputCal= document.getElementById("input-cal");
+  var clearBtn= document.getElementById("clearbtn");
+  var delbtn= document.getElementById("delbtn");
+  var plusMinusBtn= document.getElementById("clearplusmimisbtn");
+  var EnterBtn= document.getElementById("EnterBtn");
+
+  for (let i = 0; i < numberBtn.length; i++) {
+    numberBtn[i].addEventListener("click", function() {
+        // Do something when the element is clicked
+        // console.log("Element clicked!",numberBtn[i].value);
+        inputCal.value=inputCal.value+numberBtn[i].value
+    });
+}
+clearBtn.addEventListener("click", function() {
+  inputCal.value="  "
+    });
+delbtn.addEventListener("click", function() {
+  inputCal.value=inputCal.value.substring(0, inputCal.value.length-1)
+    });
+plusMinusBtn.addEventListener("click", function() {
+  inputCal.value=inputCal.value+"*-1"
+    });
+sqrtBtn.addEventListener("click", function() {
+  inputCal.value=eval("Math.sqrt("+inputCal.value+")");
+    });
+
+
+
+EnterBtn.addEventListener("click", function() {
+  inputCal.value=eval(inputCal.value);
+    
+    });
+
+
+EnterBtn1.addEventListener("click", function() {
+  inputCal.value=eval(inputCal.value);
+    
+    });
+
+
+</script>
+</html>
